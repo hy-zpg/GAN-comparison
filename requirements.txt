@@ -1,0 +1,10 @@
+numpy==1.16.2
+tensorboard==1.13.1
+tensorboard-logger==0.1.0
+tensorboardX==1.6
+torch==1.0.1.post2
+torchsummary==1.5.1
+torchvision==0.2.2.post3
+tornado==6.0.2
+tqdm==4.19.9
+

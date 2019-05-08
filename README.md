@@ -30,8 +30,20 @@ python train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
 python train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
 python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --ndc=3 --batchSize=16
 
-python train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
+
+### local running
+python train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
+python train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
+python train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
+python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
 
 
+nohup python -u train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > simpleDCGAN_Ominiglot.log 2>&1 &
+nohup python -u train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > adDCGAN_Ominiglot.log 2>&1 &
+nohup python -u train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > WGAN_GP_DCGAN_Ominiglot.log 2>&1 &
+nohup python -u train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --batchSize=16 --ndc=1 > WGAN_GP_ResNet_Ominiglot.log 2>&1 &
+
+
+nohup python -u train.py --network='WGAN_GP_DCGAN' --dataset='FIGR' --niter=2 --batchSize=64 --ndc=1 > WGAN_GP_DCGAN_FIGR.log 2>&1 &
 
 

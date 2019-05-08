@@ -11,6 +11,7 @@ import torch.utils.data
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
 import torchvision.datasets as datasets
+import numpy as np
 
 import metric
 from metric import make_dataset
@@ -77,8 +78,8 @@ if __name__ == '__main__':
 
 
     if opt.dataset == 'FIGR':
-        # opt.dataroot = './data/FIGR-8/Data'       
-        dataroot = './data/small-FIGR-8'
+        dataroot = './data/FIGR-8/Data'       
+        # dataroot = './data/small-FIGR-8'
     elif opt.dataset == 'Ominiglot':
         dataroot = './data/omniglot-py/images_background'
         
@@ -88,6 +89,10 @@ if __name__ == '__main__':
         train_loader = one_channel_preparation(dataroot,opt.imageSize,opt.ndc,opt.batchSize)
     else:
         train_loader = three_channel_preparation(dataroot,opt.imageSize,opt.batchSize)
+    
+
+    # for i, data in enumerate(train_loader, 0):
+    #     print('data shape',np.shape(data[0]))
         
 
     outf = opt.outf + opt.dataset + '_'+ str(opt.ndc) +'/' + opt.network

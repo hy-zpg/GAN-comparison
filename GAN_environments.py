@@ -365,7 +365,6 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 
 	
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-	fixed_noise = torch.randn(opt.batchSize, opt.nz, device=device)
 	D = eval(neural_network + 'Discriminator(opt.ndc, opt.imageSize, opt.imageSize)').to(device)
 	G = eval(neural_network + 'Generator(opt.nz, opt.ndc, opt.imageSize, opt.imageSize)').to(device)
 	# print(G)
@@ -436,6 +435,7 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 		# for x_, _ in train_loader:
 		for i, data in enumerate(train_loader, 0):
 			batch_size = data[0].size()[0]
+			# fixed_noise = torch.randn(batch_size*3, opt.nz, device=device)
 			discriminator_targets = torch.tensor([1] * batch_size + [-1] * batch_size, dtype=torch.float, device=device).view(-1, 1)
 			generator_targets = torch.tensor([1] * batch_size, dtype=torch.float, device=device).view(-1, 1)
 			if np.shape(data[0])[0]!=batch_size:
@@ -488,8 +488,14 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 				vutils.save_image(x_,
 						'%s/image_map/real_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
+				fixed_noise = torch.tensor(np.random.normal(size=(batch_size, opt.nz)), dtype=torch.float, device=device)
+				# fixed_noise = np.random.normal(size=(batch_size * 3, opt.nz))
 				fake = G(fixed_noise)
-				vutils.save_image(fake.detach(),
+				# fake = fake.detach().cpu().numpy()
+				# fake = np.concatenate([np.concatenate([fake[i * 3 + j] for j in range(3)], axis=-2) for i in range(batch_size)], axis=-1)
+				fake = unnormalize_data(fake)
+
+				vutils.save_image(fake,
 						'%s/image_map/fake_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 		
