@@ -101,7 +101,7 @@ def make_dataset(dataset, dataroot, imageSize,ndc):
 '''
 1. generating fake image based on trianed model
 '''
-def sampleFake(netG, nz, sampleSize, batchSize, saveFolder,dataset):
+def sampleFake(netG, nz, sampleSize, batchSize, saveFolder, network):
     print('sampling fake images ...')
     saveFolder = saveFolder + '0/'
 
@@ -110,7 +110,7 @@ def sampleFake(netG, nz, sampleSize, batchSize, saveFolder,dataset):
     except OSError:
         pass
 
-    if dataset == 'WGAN_GP_DCGAN' or dataset =='WGAN_GP_ResNet':
+    if network == 'WGAN_GP_DCGAN' or network =='WGAN_GP_ResNet':
         noise = torch.FloatTensor(batchSize, nz).cuda()
     else:
         noise = torch.FloatTensor(batchSize, nz, 1, 1).cuda()
@@ -464,12 +464,12 @@ def compute_score(real, fake, k=1, sigma=1, sqrt=True):
              3: incep + modescore + fid
 '''
 def compute_score_raw(dataset, imageSize, dataroot, sampleSize, batchSize,
-                      saveFolder_r, saveFolder_f, netG, nz, ndc,
+                      saveFolder_r, saveFolder_f, netG, nz, ndc, network,
                       conv_model='resnet34', workers=4):
 
     sampleTrue(dataset, imageSize, dataroot, sampleSize, batchSize,
                saveFolder_r, ndc, workers=workers)
-    sampleFake(netG, nz, sampleSize, batchSize, saveFolder_f, dataset)
+    sampleFake(netG, nz, sampleSize, batchSize, saveFolder_f, network)
 
     convnet_feature_saver = ConvNetFeatureSaver(model=conv_model,
                                                 batchSize=batchSize, workers=workers)

@@ -21,6 +21,7 @@ from torch.autograd import Variable
 from visualization import DCGAN_show_result,WGAN_show_result,show_train_hist
 from tensorboardX import SummaryWriter
 import pickle
+import imageio
 
 
 def adDCGAN(opt,metric,train_loader,dataroot,outf):
@@ -61,7 +62,7 @@ def adDCGAN(opt,metric,train_loader,dataroot,outf):
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		# compute initial score
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize,dataroot, opt.sampleSize, 16, outf+'/real/', outf+'/fake/',
-									 netG, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
+									 netG, opt.nz, opt.ndc,opt.network,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
 		np.save('%s/score_tr.npy' % (outf), score_tr)
 
@@ -105,22 +106,26 @@ def adDCGAN(opt,metric,train_loader,dataroot,outf):
 					  % (epoch, opt.niter, i, len(train_loader),
 						 errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))
 			if i % 100 == 0:
+				if not os.path.exists('%s/image_map/' % outf):
+					os.makedirs('%s/image_map/' % outf)
 				vutils.save_image(real_cpu,
-						'%s/real_samples.png' % outf,
+						'%s/image_map/real_samples.epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 				fake = netG(fixed_noise)
 				vutils.save_image(fake.detach(),
-						'%s/fake_samples_epoch_%03d.png' % (outf, epoch),
+						'%s/image_map/fake_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 
 		# do checkpointing
-		torch.save(netG.state_dict(), '%s/netG_epoch_%d.pth' % (outf, epoch))
-		torch.save(netD.state_dict(), '%s/netD_epoch_%d.pth' % (outf, epoch))
+		if not os.path.exists('%s/trained_models/' % outf):
+			os.makedirs('%s/trained_models/' % outf)
+		torch.save(netG.state_dict(), '%s/trained_models/netG_epoch_%d.pth' % (outf, epoch))
+		torch.save(netD.state_dict(), '%s/trained_models/netD_epoch_%d.pth' % (outf, epoch))
 
 		#### metric scores computing (key function) ####
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-									 netG, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
+									 netG, opt.nz, opt.ndc,opt.network,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	# save final metric scores of all epoches
@@ -158,7 +163,7 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 	if opt.netD != '':
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-											 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
+											 G, opt.nz,opt.ndc, opt.network,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
 		np.save('%s/score_tr.npy' % (outf), score_tr)
 
@@ -256,22 +261,26 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 					  % (epoch, opt.niter, i, len(train_loader),
 						 D_train_loss.item(), G_train_loss.item(), D_x, D_G_z1, D_G_z2))
 			if i % 100 == 0:
+				if not os.path.exists('%s/image_map/' % outf):
+					os.makedirs('%s/image_map/' % outf)
 				vutils.save_image(x_,
-						'%s/real_samples.png' % outf,
+						'%s/image_map/real_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 				fake = G(fixed_noise)
 				vutils.save_image(fake.detach(),
-						'%s/fake_samples_epoch_%03d.png' % (outf, epoch),
+						'%s/image_map/fake_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 
 		# do checkpointing
-		torch.save(G.state_dict(), '%s/netG_epoch_%d.pth' % (outf, epoch))
-		torch.save(D.state_dict(), '%s/netD_epoch_%d.pth' % (outf, epoch))
+		if not os.path.exists('%s/trained_models/' % outf):
+			os.makedirs('%s/trained_models/' % outf)
+		torch.save(G.state_dict(), '%s/trained_models/netG_epoch_%d.pth' % (outf, epoch))
+		torch.save(D.state_dict(), '%s/trained_models/netD_epoch_%d.pth' % (outf, epoch))
 
 		#### metric scores computing (key function) ####
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-									 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
+									 G, opt.nz,opt.ndc,opt.network, conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	
@@ -286,8 +295,9 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 		print('[%d/%d] - ptime: %.2f, loss_d: %.3f, loss_g: %.3f' % ((epoch + 1), opt.niter, per_epoch_ptime, torch.mean(torch.FloatTensor(D_losses)),
 																  torch.mean(torch.FloatTensor(G_losses))))
 		
-		p = outf + str(epoch + 1) + '.png'
-		DCGAN_show_result((epoch+1),G, p, 5, opt.nz)
+		if opt.ndc == 3:
+			p = outf + '/' + str(epoch + 1) + '.png'
+			DCGAN_show_result((epoch+1),G, p, 5, opt.nz)
 		train_hist['D_losses'].append(torch.mean(torch.FloatTensor(D_losses)))
 		train_hist['G_losses'].append(torch.mean(torch.FloatTensor(G_losses)))
 		train_hist['per_epoch_ptimes'].append(per_epoch_ptime)
@@ -300,6 +310,7 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 
 	print("Avg per epoch ptime: %.2f, total %d epochs ptime: %.2f" % (torch.mean(torch.FloatTensor(train_hist['per_epoch_ptimes'])), opt.niter, total_ptime))
 	print("Training finish!... save training results")
+	np.save('%s/score_tr_ep.npy' % outf, score_tr)
 	torch.save(G.state_dict(), '%s/G_epoch_%d.pth' % (outf, epoch))
 	torch.save(D.state_dict(), '%s/D_epoch_%d.pth' % (outf, epoch))
 
@@ -309,11 +320,12 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 
 	show_train_hist(train_hist, save=True, path=outf+'/train_hist.png')
 
-	images = []
-	for e in range(opt.niter):
-		img_name = outf + str(e + 1) + '.png'
-		images.append(imageio.imread(img_name))
-	imageio.mimsave(outf+'/generation_animation.gif', images, fps=5)
+	if opt.ndc==3:
+		images = []
+		for e in range(opt.niter):
+			img_name = outf +'/'+ str(e + 1) + '.png'
+			images.append(imageio.imread(img_name))
+		imageio.mimsave(outf+'/generation_animation.gif', images, fps=5)
 
 	# save final metric scores of all epoches
 	np.save('%s/score_tr_ep.npy' % outf, score_tr)
@@ -353,7 +365,7 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 
 	
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-	fixed_noise = torch.randn(opt.batchSize, opt.nz, 1, 1, device=device)
+	fixed_noise = torch.randn(opt.batchSize, opt.nz, device=device)
 	D = eval(neural_network + 'Discriminator(opt.ndc, opt.imageSize, opt.imageSize)').to(device)
 	G = eval(neural_network + 'Generator(opt.nz, opt.ndc, opt.imageSize, opt.imageSize)').to(device)
 	# print(G)
@@ -384,9 +396,9 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 	if opt.netD != '':
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-													 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
+													 G, opt.nz,opt.ndc,opt.network, conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
-		np.save('%s/score_tr.npy' % ('Runs/WGAN_FIGR_Results'), score_tr)
+		np.save('%s/score_tr.npy' % (outf), score_tr)
 
 
 	# starting training
@@ -471,12 +483,14 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 					  % (epoch, opt.niter, i, len(train_loader),
 						 discriminator_loss.item(), generator_loss.item()))
 			if i % 100 == 0:
+				if not os.path.exists('%s/image_map/' % outf):
+					os.makedirs('%s/image_map/' % outf)
 				vutils.save_image(x_,
-						'%s/real_samples.png' % outf,
+						'%s/image_map/real_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 				fake = G(fixed_noise)
 				vutils.save_image(fake.detach(),
-						'%s/fake_samples_epoch_%03d.png' % (outf, epoch),
+						'%s/image_map/fake_samples_epoch_%03d.png' % (outf, epoch),
 						normalize=True)
 		
 		epoch_end_time = time.time()
@@ -496,7 +510,7 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 		## evaluation
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-														 G, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
+														 G, opt.nz, opt.ndc,opt.network,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	end_time = time.time()
@@ -505,8 +519,16 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 
 	print("Avg per epoch ptime: %.2f, total %d epochs ptime: %.2f" % (torch.mean(torch.FloatTensor(train_hist['per_epoch_ptimes'])), opt.niter, total_ptime))
 	print("Training finish!... save training results")
-	torch.save(G.state_dict(), outf +"/generator_param.pkl")
-	torch.save(D.state_dict(), outf +"/discriminator_param.pkl")
+
+
+	# torch.save(G.state_dict(), outf +"/trained_models/generator_param.pkl")
+	# torch.save(D.state_dict(), outf +"/trained_models/discriminator_param.pkl")
+	np.save('%s/score_tr_ep.npy' % outf, score_tr)
+	if not os.path.exists('%s/trained_models/' % outf):
+		os.makedirs('%s/trained_models/' % outf)
+	torch.save(G.state_dict(), '%s/trained_models/G_epoch_%d.pth' % (outf, epoch))
+	torch.save(D.state_dict(), '%s/trained_models/D_epoch_%d.pth' % (outf, epoch))
+
 	with open(outf+'/train_hist.pkl', 'wb') as f:
 		pickle.dump(train_hist, f)
 

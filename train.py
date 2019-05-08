@@ -77,10 +77,10 @@ if __name__ == '__main__':
 
 
     if opt.dataset == 'FIGR':
-        # opt.dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/FIGR/data/FIGR-8/Data'       
-        dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/Matching-network-GAN/datasets/FIGR-8'
+        # opt.dataroot = './data/FIGR-8/Data'       
+        dataroot = './data/small-FIGR-8'
     elif opt.dataset == 'Ominiglot':
-        dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/FIGR/data/omniglot-py/images_background'
+        dataroot = './data/omniglot-py/images_background'
         
 
     ## data preparation
