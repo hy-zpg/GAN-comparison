@@ -4,9 +4,12 @@ import torch.utils.data as data
 import os
 from PIL import Image
 import numpy as np
+import torchvision.datasets as datasets
+import torch
+import torchvision.transforms as transforms
 
 
-
+### preparing the datasets FIGR
 #### data preparation for WGAN: single channel image preprocessing
 ### complex for single channel image
 def find_classes(root_dir):
@@ -51,7 +54,7 @@ class FIGR(data.Dataset):
         return len(self.all_items)
 
 
-def WGAN_data_preparation(data_dir,length,channels,batch_size):
+def one_channel_preparation(data_dir,length,channels,batch_size):
 
 	train_loader_1 = FIGR(data_dir, transform=transforms.Compose([lambda x: Image.open(x).convert('L'),
 	                                                               lambda x: x.resize((length,length)),
@@ -67,7 +70,7 @@ def WGAN_data_preparation(data_dir,length,channels,batch_size):
 
 ##### data preprocess for DCGAN
 ##### simple for three channel images
-def DCGAN_data_preparation(data_dir,length,batch_size):
+def three_channel_preparation(data_dir,length,batch_size):
 	transform = transforms.Compose([
 	        transforms.Scale(length),
 	        transforms.ToTensor(),
@@ -79,7 +82,7 @@ def DCGAN_data_preparation(data_dir,length,batch_size):
 	return train_loader
 
 
-def WGAN_data_evaluation(data_dir,length,channels=1):
+def one_channel_evaluation(data_dir,length,channels=1):
 	dset = FIGR(data_dir, transform=transforms.Compose([lambda x: Image.open(x).convert('L'),
 	                                                               lambda x: x.resize((length,length)),
 	                                                               lambda x: np.reshape(x, (channels, length, length)), 
@@ -88,7 +91,7 @@ def WGAN_data_evaluation(data_dir,length,channels=1):
 	return dset
 
 
-def DCGAN_data_evaluation(data_dir,length):
+def three_channel_evaluation(data_dir,length):
 	transform = transforms.Compose([
 	        transforms.Scale(length),
 	        transforms.ToTensor(),
@@ -97,3 +100,20 @@ def DCGAN_data_evaluation(data_dir,length):
 
 	dset = datasets.ImageFolder(data_dir, transform)
 	return dset
+
+    # FIGR_one_channel_preparation
+    # FIGR_three_channel_preparation
+    # FIGR_one_channel_evaluation
+    # FIGR_three_channel_evaluation
+
+
+    
+
+
+
+
+
+
+
+
+

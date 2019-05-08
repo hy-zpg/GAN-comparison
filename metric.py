@@ -18,7 +18,8 @@ from tqdm import tqdm
 from scipy.stats import entropy
 from numpy.linalg import norm
 from scipy import linalg
-from  data_utils import WGAN_data_evaluation, DCGAN_data_evaluation
+from  data_utils import one_channel_evaluation,three_channel_evaluation
+
 
 ############################
 # calculating all evaluation metrics
@@ -34,7 +35,7 @@ def giveName(iter):  # 7 digit name.
 1. preparing true samples for evaluation
 2. usually obtaining the pairs (dset, images-labels)
 '''
-def make_dataset(dataset, dataroot, imageSize):
+def make_dataset(dataset, dataroot, imageSize,ndc):
     """
     :param dataset: must be in 'cifar10 | lsun | imagenet | folder | lfw | fake'
     :return: pytorch dataset for DataLoader to utilize
@@ -77,8 +78,14 @@ def make_dataset(dataset, dataroot, imageSize):
                                    ]))
 
     # one channel
-    elif dataset == 'FIGR' or dataset=='Ominiglot':
-        dataset = DCGAN_data_evaluation(dataroot,imageSize)
+    elif dataset == 'FIGR' or dataset == 'Ominiglot':
+        if ndc == 1:
+            dataset = one_channel_evaluation(dataroot,imageSize)
+        else:
+            dataset = three_channel_evaluation(dataroot,imageSize)
+
+
+
 
     # three channel
     # elif dataset == 'figr':
@@ -123,11 +130,11 @@ def sampleFake(netG, nz, sampleSize, batchSize, saveFolder,dataset):
 '''
 1. sampling the real images from dataset
 '''
-def sampleTrue(dataset, imageSize, dataroot, sampleSize, batchSize, saveFolder, workers=4):
+def sampleTrue(dataset, imageSize, dataroot, sampleSize, batchSize, saveFolder, ndc,workers=4):
     print('sampling real images ...')
     saveFolder = saveFolder + '0/'
 
-    dataset = make_dataset(dataset, dataroot, imageSize)
+    dataset = make_dataset(dataset, dataroot, imageSize,ndc)
     dataloader = torch.utils.data.DataLoader(
         dataset, shuffle=True, batch_size=batchSize, num_workers=int(workers))
 
@@ -457,11 +464,11 @@ def compute_score(real, fake, k=1, sigma=1, sqrt=True):
              3: incep + modescore + fid
 '''
 def compute_score_raw(dataset, imageSize, dataroot, sampleSize, batchSize,
-                      saveFolder_r, saveFolder_f, netG, nz, 
+                      saveFolder_r, saveFolder_f, netG, nz, ndc,
                       conv_model='resnet34', workers=4):
 
     sampleTrue(dataset, imageSize, dataroot, sampleSize, batchSize,
-               saveFolder_r, workers=workers)
+               saveFolder_r, ndc, workers=workers)
     sampleFake(netG, nz, sampleSize, batchSize, saveFolder_f, dataset)
 
     convnet_feature_saver = ConvNetFeatureSaver(model=conv_model,

@@ -20,22 +20,15 @@ This repository is modified with [GAN collection](https://github.com/znxlwm/pyto
 ### Scripts
 1. Datasets FIGR
 python train.py --network='adDCGAN' --dataset='FIGR' --niter=25 --ndc=3
-
 python train.py --network='adDCGAN' --dataset='FIGR' --niter=25 --ndc=1
-
 python train.py --network='WGAN_GP_DCGAN' --dataset='FIGR' --niter=25 --ndc=1
-
 python train.py --network='WGAN_GP_ResNet' --dataset='FIGR' --niter=25 --ndc=1
-
 python train.py --network='simpleDCGAN' --dataset='FIGR' --niter=25 --ndc=1
 
 2. Datasets Ominiglot
 python train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
-
 python train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
-
-python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --ndc=1
-
+python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --ndc=1 --batchSize=16
 python train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
 
 

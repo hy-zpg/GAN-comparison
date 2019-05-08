@@ -61,7 +61,7 @@ def adDCGAN(opt,metric,train_loader,dataroot,outf):
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		# compute initial score
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize,dataroot, opt.sampleSize, 16, outf+'/real/', outf+'/fake/',
-									 netG, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+									 netG, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
 		np.save('%s/score_tr.npy' % (outf), score_tr)
 
@@ -120,7 +120,7 @@ def adDCGAN(opt,metric,train_loader,dataroot,outf):
 		#### metric scores computing (key function) ####
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-									 netG, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+									 netG, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	# save final metric scores of all epoches
@@ -158,7 +158,7 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 	if opt.netD != '':
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-											 G, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+											 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
 		np.save('%s/score_tr.npy' % (outf), score_tr)
 
@@ -271,7 +271,7 @@ def simpleDCGAN(opt,metric,train_loader,dataroot,outf):
 		#### metric scores computing (key function) ####
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-									 G, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+									 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	
@@ -384,7 +384,7 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 	if opt.netD != '':
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-													 G, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+													 G, opt.nz,opt.ndc, conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[0] = s
 		np.save('%s/score_tr.npy' % ('Runs/WGAN_FIGR_Results'), score_tr)
 
@@ -496,7 +496,7 @@ def WGAN_GP(opt,metric,train_loader,dataroot,outf,neural_network):
 		## evaluation
 		score_tr = np.zeros((opt.niter, 4*7+3))
 		s = metric.compute_score_raw(opt.dataset, opt.imageSize, dataroot, opt.sampleSize, opt.batchSize, outf+'/real/', outf+'/fake/',\
-														 G, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
+														 G, opt.nz, opt.ndc,conv_model='inception_v3', workers=int(opt.workers))
 		score_tr[epoch] = s
 
 	end_time = time.time()

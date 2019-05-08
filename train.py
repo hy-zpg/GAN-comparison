@@ -8,9 +8,9 @@ import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 import torch.optim as optim
 import torch.utils.data
-import torchvision.datasets as dset
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
+import torchvision.datasets as datasets
 
 import metric
 from metric import make_dataset
@@ -18,7 +18,7 @@ import numpy as np
 from Discriminator import adDCGANDiscriminator
 from Generator import adDCGANGenerator
 import metric
-from data_utils import WGAN_data_preparation, DCGAN_data_preparation
+from data_utils import one_channel_preparation, three_channel_preparation
 from GAN_environments import adDCGAN, simpleDCGAN, WGAN_GP
 
 ##problem channel=3, cann't
@@ -80,17 +80,19 @@ if __name__ == '__main__':
         # opt.dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/FIGR/data/FIGR-8/Data'       
         dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/Matching-network-GAN/datasets/FIGR-8'
     elif opt.dataset == 'Ominiglot':
-        dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/FIGR/data/omniglot-py'
+        dataroot = '/media/user/05e85ab6-e43e-4f2a-bc7b-fad887cfe312/meta_gan/FIGR/data/omniglot-py/images_background'
         
 
     ## data preparation
     if opt.ndc == 1:
-        train_loader = WGAN_data_preparation(dataroot,opt.imageSize,opt.ndc,opt.batchSize)
+        train_loader = one_channel_preparation(dataroot,opt.imageSize,opt.ndc,opt.batchSize)
     else:
-        train_loader = DCGAN_data_preparation(dataroot,opt.imageSize,opt.batchSize)
-
+        train_loader = three_channel_preparation(dataroot,opt.imageSize,opt.batchSize)
+        
 
     outf = opt.outf + opt.dataset + '_'+ str(opt.ndc) +'/' + opt.network
+    if not os.path.exists(outf):
+        os.makedirs(outf)
     if opt.network == 'adDCGAN':
         adDCGAN(opt,metric,train_loader,dataroot,outf)
     elif opt.network == 'simpleDCGAN':
