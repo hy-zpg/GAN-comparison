@@ -4,7 +4,7 @@ This repository is modified with [GAN collection](https://github.com/znxlwm/pyto
 
 1. GAN-Metrics refer to [GAN metrics](https://github.com/xuqiantong/
 2. pytorch-generative-model-collections refer to [GAN collection](https://github.com/znxlwm/
-3. RUNs: the results, currently including (two dataset [FIGR and Ominiglot, four GAN model [adjustable DCGAN, simple DCGAN, WGAN-GP-DCGAN and WGAN-GP-ResNet], two mode images [three channels and one channels]])
+3. RUNs: the results, currently including (two dataset [FIGR and Omniglot, four GAN model [adjustable DCGAN, simple DCGAN, WGAN-GP-DCGAN and WGAN-GP-ResNet], two mode images [three channels and one channels]])
 
 
 ### Codes
@@ -25,25 +25,55 @@ python train.py --network='WGAN_GP_DCGAN' --dataset='FIGR' --niter=25 --ndc=1
 python train.py --network='WGAN_GP_ResNet' --dataset='FIGR' --niter=25 --ndc=1
 python train.py --network='simpleDCGAN' --dataset='FIGR' --niter=25 --ndc=1
 
-2. Datasets Ominiglot
-python train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
-python train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --ndc=1
-python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --ndc=3 --batchSize=16
+2. Datasets Omniglot
+python train.py --network='adDCGAN' --dataset='Omniglot' --niter=25 --ndc=1
+python train.py --network='WGAN_GP_DCGAN' --dataset='Omniglot' --niter=25 --ndc=1
+python train.py --network='WGAN_GP_ResNet' --dataset='Omniglot' --niter=25 --ndc=3 --batchSize=16
+
+
+
+
+### Experimental results
+
+1. WGAN_GP_DCGAN, Omniglot dataset, channel=1
+* genrated image  vs real image
+
+<div align="center">
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_006.png" height="300px" alt="fake_samples_epoch_006" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_006.png" height="300px" alt="real_samples_epoch_006" >
+</div>
+
+
+![avatar](/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_006.png)
+<center>fake_samples_epoch_006</center>
+
+![avatar](/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_006.png)
+<center>fake_samples_epoch_006</center>
+
 
 
 ### local running
-python train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
-python train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
-python train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
-python train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1
+python train.py --network='simpleDCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1
+
+python train.py --network='adDCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1
+
+python train.py --network='WGAN_GP_DCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1
+
+python train.py --network='WGAN_GP_ResNet' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1
 
 
-nohup python -u train.py --network='simpleDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > simpleDCGAN_Ominiglot.log 2>&1 &
-nohup python -u train.py --network='adDCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > adDCGAN_Ominiglot.log 2>&1 &
-nohup python -u train.py --network='WGAN_GP_DCGAN' --dataset='Ominiglot' --niter=25 --batchSize=32 --ndc=1 > WGAN_GP_DCGAN_Ominiglot.log 2>&1 &
-nohup python -u train.py --network='WGAN_GP_ResNet' --dataset='Ominiglot' --niter=25 --batchSize=16 --ndc=1 > WGAN_GP_ResNet_Ominiglot.log 2>&1 &
+nohup python -u train.py --network='simpleDCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1 > simpleDCGAN_Omniglot.log 2>&1 &
+
+nohup python -u train.py --network='adDCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1 > adDCGAN_Omniglot.log 2>&1 &
+
+nohup python -u train.py --network='WGAN_GP_DCGAN' --dataset='Omniglot' --niter=25 --batchSize=32 --ndc=1 > WGAN_GP_DCGAN_Omniglot.log 2>&1 &
+
+nohup python -u train.py --network='WGAN_GP_ResNet' --dataset='Omniglot' --niter=25 --batchSize=16 --ndc=1 > WGAN_GP_ResNet_Omniglot.log 2>&1 &
 
 
 nohup python -u train.py --network='WGAN_GP_DCGAN' --dataset='FIGR' --niter=2 --batchSize=64 --ndc=1 > WGAN_GP_DCGAN_FIGR.log 2>&1 &
+
+
+
 
 
