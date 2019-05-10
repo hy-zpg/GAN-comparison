@@ -44,25 +44,26 @@ description: each class just has 20 samples, most network trianing is overfittin
 conclusion: at first and sencond training epoch, generating new things (leanring), from epoch=3 to epoch=24, same mode, maybe the reanson is the small number of trianing images.
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="200px" alt="fake_samples_epoch_000" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_000.png" height="200px" alt="real_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples.epoch_000.png" height="300px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_001.png" height="200px" alt="fake_samples_epoch_001" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_001.png" height="200px" alt="real_samples_epoch_001" >
+<div align="center">
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_001.png" height="300px" alt="fake_samples_epoch_001" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples.epoch_001.png" height="300px" alt="real_samples_epoch_001" >
 </div>
 <center>fake_samples_epoch_001 vs real_samples_epoch_001 </center>
 
 <div align="center">
 <img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_003.png" height="300px" alt="fake_samples_epoch_003" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_003.png" height="300px" alt="real_samples_epoch_003" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples.epoch_003.png" height="300px" alt="real_samples_epoch_003" >
 </div>
 <center>fake_samples_epoch_003 vs real_samples_epoch_003 </center>
 
 <div align="center">
 <img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_024.png" height="300px" alt="fake_samples_epoch_024" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_024.png" height="300px" alt="real_samples_epoch_024" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples.epoch_024.png" height="300px" alt="real_samples_epoch_024" >
 </div>
 <center>fake_samples_epoch_024 vs real_samples_epoch_024 </center>
 
@@ -82,8 +83,8 @@ conclusion: generating same mode at every epoch
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/simpleDCGAN/image_map/fake_samples_epoch_047.png" height="300px" alt="fake_samples_epoch_006" >
-<img src="/RUNs/Ominiglot_1/simpleDCGAN/image_map/real_samples_epoch_047.png" height="300px" alt="real_samples_epoch_006" >
+<img src="/RUNs/Ominiglot_1/simpleDCGAN/image_map/fake_samples_epoch_047.png" height="300px" alt="fake_samples_epoch_047" >
+<img src="/RUNs/Ominiglot_1/simpleDCGAN/image_map/real_samples_epoch_047.png" height="300px" alt="real_samples_epoch_047" >
 </div>
 <center>fake_samples_epoch_047 vs real_samples_epoch_047 </center>
 
@@ -104,14 +105,15 @@ conclusion: generating new information in each epoch, but fail to learn correctl
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="130px" alt="fake_samples_epoch_010" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="130px" alt="real_samples_epoch_010" >
+<div align="center">
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="200px" alt="fake_samples_epoch_010" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="200px" alt="real_samples_epoch_010" >
 </div>
 <center>fake_samples_epoch_010 vs real_samples_epoch_010 </center>
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="150px" alt="fake_samples_epoch_032" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="150px" alt="real_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="200px" alt="fake_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="200px" alt="real_samples_epoch_032" >
 </div>
 <center>fake_samples_epoch_032 vs real_samples_epoch_032 </center>
 
