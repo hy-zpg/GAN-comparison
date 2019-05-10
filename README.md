@@ -44,13 +44,13 @@ description: each class just has 20 samples, most network trianing is overfittin
 conclusion: at first and sencond training epoch, generating new things (leanring), from epoch=3 to epoch=24, same mode, maybe the reanson is the small number of trianing images.
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_000.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_000.png" height="200px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_001.png" height="300px" alt="fake_samples_epoch_001" >
-<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_001.png" height="300px" alt="real_samples_epoch_001" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/fake_samples_epoch_001.png" height="200px" alt="fake_samples_epoch_001" >
+<img src="/RUNs/Ominiglot_1/adDCGAN/image_map/real_samples_epoch_001.png" height="200px" alt="real_samples_epoch_001" >
 </div>
 <center>fake_samples_epoch_001 vs real_samples_epoch_001 </center>
 
@@ -99,25 +99,25 @@ GAN metric: 31 dimension (4 feature spaces * 7 scores + incep + modescore + fid)
 conclusion: generating new information in each epoch, but fail to learn correctly. 
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_000.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_000.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_000.png" height="200px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="300px" alt="fake_samples_epoch_010" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="300px" alt="real_samples_epoch_010" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="200px" alt="fake_samples_epoch_010" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="200px" alt="real_samples_epoch_010" >
 </div>
 <center>fake_samples_epoch_010 vs real_samples_epoch_010 </center>
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="300px" alt="fake_samples_epoch_032" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="300px" alt="real_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="200px" alt="fake_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="200px" alt="real_samples_epoch_032" >
 </div>
 <center>fake_samples_epoch_032 vs real_samples_epoch_032 </center>
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_063.png" height="300px" alt="fake_samples_epoch_063" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_063.png" height="300px" alt="real_samples_epoch_063" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_063.png" height="200px" alt="fake_samples_epoch_063" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_063.png" height="200px" alt="real_samples_epoch_063" >
 </div>
 <center>fake_samples_epoch_063 vs real_samples_epoch_063 </center>
 
