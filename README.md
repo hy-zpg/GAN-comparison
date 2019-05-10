@@ -104,14 +104,14 @@ conclusion: generating new information in each epoch, but fail to learn correctl
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="200px" alt="fake_samples_epoch_010" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="200px" alt="real_samples_epoch_010" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_010.png" height="130px" alt="fake_samples_epoch_010" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_010.png" height="130px" alt="real_samples_epoch_010" >
 </div>
 <center>fake_samples_epoch_010 vs real_samples_epoch_010 </center>
 
 <div align="center">
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="200px" alt="fake_samples_epoch_032" >
-<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="200px" alt="real_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_032.png" height="150px" alt="fake_samples_epoch_032" >
+<img src="/RUNs/Ominiglot_1/WGAN_GP_DCGAN/image_map/real_samples_epoch_032.png" height="150px" alt="real_samples_epoch_032" >
 </div>
 <center>fake_samples_epoch_032 vs real_samples_epoch_032 </center>
 
