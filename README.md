@@ -132,9 +132,11 @@ GAN metric: 31 dimension (4 feature spaces * 7 scores + incep + modescore + fid)
 
 #### Datesets:FIGR
 
-description: some class has enough samples while the remaining classes just has several images, so different models can generate reasonable imags in general GAN setting.
+description: some class has enough samples while the remaining classes just has several images, so different models can generate reasonable imags in general GAN setting. grey images
 
-1. simpleDCGAN, FIGR dataset, channel=3
+1. simpleDCGAN, FIGR dataset
+channel 3 has better performance because of the model?, waiting to verify...
+1.1 channel=3
 
 <div align="center">
 <img src="/RUNs/FIGR_3/simpleDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
@@ -145,7 +147,7 @@ description: some class has enough samples while the remaining classes just has 
 haven't finished running and haven't generated other measurement index, two large datasets
 
 
-2. simpleDCGAN, FIGR dataset, channel=1
+1.2 channel=1
 
 <div align="center">
 <img src="/RUNs/FIGR_1/simpleDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
@@ -156,9 +158,67 @@ haven't finished running and haven't generated other measurement index, two larg
 haven't finished running and haven't generated other measurement index, two large datasets
 
 
+2. adDCGAN, FIGR dataset
+
+2.1 channel=3
+
+<!-- <div align="center">
+<img src="/RUNs/FIGR_3/adDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/FIGR_3/adDCGAN/image_map/real_samples_epoch_000.png" height="300px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
+
+haven't fi -->nished running and haven't generated other measurement index, two large datasets
+
+2.2 channel=1
+description: conitune updating, but has no good performance
+<div align="center">
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_000.png" height="300px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
 
-3. WGAN_GP_DCGAN, FIGR dataset, channel=3
+<div align="center">
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_003.png" height="300px" alt="fake_samples_epoch_003" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_003.png" height="300px" alt="real_samples_epoch_003" >
+</div>
+<center>fake_samples_epoch_003 vs real_samples_epoch_003 </center>
+
+<div align="center">
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_009.png" height="300px" alt="fake_samples_epoch_009" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_009.png" height="300px" alt="real_samples_epoch_009" >
+</div>
+<center>fake_samples_epoch_009 vs real_samples_epoch_009 </center>
+
+
+<div align="center">
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_015.png" height="300px" alt="fake_samples_epoch_015" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_015.png" height="300px" alt="real_samples_epoch_015" >
+</div>
+<center>fake_samples_epoch_015 vs real_samples_epoch_015 </center>
+
+
+<div align="center">
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_027.png" height="300px" alt="fake_samples_epoch_027" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_027.png" height="300px" alt="real_samples_epoch_027" >
+</div>
+<center>fake_samples_epoch_027 vs real_samples_epoch_027 </center>
+
+
+
+
+
+haven't finished running and haven't generated other measurement index, two large datasets
+
+
+
+
+
+
+3 WGAN_GP_DCGAN, FIGR dataset
+
+3.1 channel=3
 
 <div align="center">
 <img src="/RUNs/FIGR_3/WGAN_GP_DCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
@@ -169,7 +229,7 @@ haven't finished running and haven't generated other measurement index, two larg
 haven't finished running and haven't generated other measurement index, two large datasets
 
 
-4. WGAN_GP_DCGAN, FIGR dataset, channel=1
+3.2 channel=1
 
 <div align="center">
 <img src="/RUNs/FIGR_1/WGAN_GP_DCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
