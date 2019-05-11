@@ -174,34 +174,34 @@ haven't fi -->nished running and haven't generated other measurement index, two 
 description: conitune updating, but has no good performance
 <div align="center">
 <img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_000.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_000.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples.epoch_000.png" height="300px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_000 vs real_samples_epoch_000 </center>
 
 
 <div align="center">
 <img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_003.png" height="300px" alt="fake_samples_epoch_003" >
-<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_003.png" height="300px" alt="real_samples_epoch_003" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples.epoch_003.png" height="300px" alt="real_samples_epoch_003" >
 </div>
 <center>fake_samples_epoch_003 vs real_samples_epoch_003 </center>
 
 <div align="center">
 <img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_009.png" height="300px" alt="fake_samples_epoch_009" >
-<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_009.png" height="300px" alt="real_samples_epoch_009" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples.epoch_009.png" height="300px" alt="real_samples_epoch_009" >
 </div>
 <center>fake_samples_epoch_009 vs real_samples_epoch_009 </center>
 
 
 <div align="center">
 <img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_015.png" height="300px" alt="fake_samples_epoch_015" >
-<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_015.png" height="300px" alt="real_samples_epoch_015" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples.epoch_015.png" height="300px" alt="real_samples_epoch_015" >
 </div>
 <center>fake_samples_epoch_015 vs real_samples_epoch_015 </center>
 
 
 <div align="center">
 <img src="/RUNs/FIGR_1/adDCGAN/image_map/fake_samples_epoch_027.png" height="300px" alt="fake_samples_epoch_027" >
-<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples_epoch_027.png" height="300px" alt="real_samples_epoch_027" >
+<img src="/RUNs/FIGR_1/adDCGAN/image_map/real_samples.epoch_027.png" height="300px" alt="real_samples_epoch_027" >
 </div>
 <center>fake_samples_epoch_027 vs real_samples_epoch_027 </center>
 
