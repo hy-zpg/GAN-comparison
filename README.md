@@ -37,6 +37,54 @@ python train.py --network='WGAN_GP_ResNet' --dataset='Omniglot' --niter=25 --ndc
 
 #### Datesets:ominiglot
 
+current: network ResNet, optimization WGAN_GP (training ratio D:G=5:1, lamba=5, lr ration D:G=1:1), output good results
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_005.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_005.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_005 vs real_samples_epoch_005 </center>
+
+
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_015.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_015.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_015 vs real_samples_epoch_015 </center>
+
+
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_035.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_035.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_035 vs real_samples_epoch_035 </center>
+
+
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_055.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_055.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_055 vs real_samples_epoch_055 </center>
+
+
+
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_065.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_065.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_065 vs real_samples_epoch_065 </center>
+
+
+<div align="center">
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/fake_samples_epoch_083.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs/Ominiglot_ResNet_WGAN_GP_batchSize_32-classes_per_set1623-samples_per_class20-lr0.0001-DGratio1.0-GDratio1.0/image_map/real_samples_epoch_083.png" height="200px" alt="real_samples_epoch_000" >
+</div>
+<center>fake_samples_epoch_083 vs real_samples_epoch_083 </center>
+
+
+
+
+
+
 description: each class just has 20 samples, most network trianing is overfitting in general GAN setting. the peformance of light model is better.
 
 1. network:DCGAN, optimization:simple,  model-size=11M(D) + 14M(G)
@@ -44,20 +92,20 @@ description: each class just has 20 samples, most network trianing is overfittin
 conclusion: model collapse?
 
 <div align="center">
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_005.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_005.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_005.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_005.png" height="200px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_005 vs real_samples_epoch_005 </center>
 
 <div align="center">
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_009.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_009.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_009.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_009.png" height="200px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_009 vs real_samples_epoch_009 </center>
 
 <div align="center">
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_049.png" height="300px" alt="fake_samples_epoch_000" >
-<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_049.png" height="300px" alt="real_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/fake_samples_epoch_049.png" height="200px" alt="fake_samples_epoch_000" >
+<img src="/RUNs-old/Ominiglot_simple_adDCGAN/image_map/real_samples_epoch_049.png" height="200px" alt="real_samples_epoch_000" >
 </div>
 <center>fake_samples_epoch_049 vs real_samples_epoch_049 </center>
 
@@ -112,7 +160,7 @@ conclusion: generating new information in each epoch, is trainable.
 
 
 
-2. network:ResNet optimization , model-size=77M(D) + 79M(G)
+2. network:ResNet,  optimization:WGAN-GP , model-size=77M(D) + 79M(G)
 
 <div align="center">
 <img src="/RUNs-old-19/small_FIGR_WGAN_GP_ResNet/image_map/fake_samples_epoch_000.png" height="200px" alt="fake_samples_epoch_017" >
