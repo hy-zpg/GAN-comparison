@@ -5,6 +5,6 @@ tensorboardX==1.6
 torch==1.0.1.post2
 torchsummary==1.5.1
 torchvision==0.2.2.post3
-tornado==6.0.2
+tornado==6.3.3
 tqdm==4.19.9
 
